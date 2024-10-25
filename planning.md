@@ -82,35 +82,34 @@ For your Java-based quiz website, here are some key aspects you can consider:
 	
 # Data dictionary (SQL Tables)
 1. Questions
-| **Attribute Name**   | **Data Type**   | **Nullable**   |
-|----------------------|-----------------|-----------------|
-| `question_id`          | INT             | No              | [PK]
-| `question_text`        | VARCHAR(255)    | No              |
-| `question_type`        | ENUM            | No              |
-| `correct_answers`      | JSON            | Yes             |
-| `wrong_answers`        | JSON            | Yes             |
-| `answer_percentage`    | JSON            | Yes             | `[20, 80]`
-| `created_at`           | DATETIME        | No              |
-| `last_updated_at`      | DATETIME        | No              |
+| **Attribute Name**  | **Data Type** | **Nullable** |
+| ------------------- | ------------- | ------------ |
+| `question_id`       | INT           | No           | [PK] |
+| `question_text`     | VARCHAR(255)  | No           |
+| `question_type`     | ENUM          | No           |
+| `correct_answers`   | JSON          | Yes          |
+| `wrong_answers`     | JSON          | Yes          |
+| `answer_percentage` | JSON          | Yes          | `[20, 80]` |
+| `created_at`        | DATETIME      | No           |
+| `last_updated_at`   | DATETIME      | No           |
 
 
 2. Quiz
-| **Attribute Name**   | **Data Type**   | **Nullable**   |
-|----------------------|-----------------|-----------------|
-| quiz_id              | INT             | No              | [PK]
-| lecturer_id          | INT             | No              | [FK] lecturer table
-| quiz_name            | VARCHAR(255)    | No              |
-| description          | VARCHAR(255)    | No              |
-| visibility           | ENUM            | No              |  set to public or private
-| join_code            | VARCHAR(255)    | No              |
-| question_ids         | JSON            | No              |
-| last_updated_at      | DATETIME        | No              |
-| average_percentage   | INT             | No              | average final score for the quiz
-| created_at           | DATETIME        | No              |
+| **Attribute Name** | **Data Type** | **Nullable** |
+| ------------------ | ------------- | ------------ |
+| quiz_id            | INT           | No           | [PK] |
+| lecturer_id        | INT           | No           | [FK] lecturer table |
+| quiz_name          | VARCHAR(255)  | No           |
+| description        | VARCHAR(255)  | No           |
+| public_visibility         | boolean          | No           | set to public or private |
+| join_code          | VARCHAR(255)  | No           |
+| last_updated_at    | DATETIME      | No           |
+| average_percentage | INT           | No           | average final score for the quiz |
+| created_at         | DATETIME      | No           |
 - total attemps are calculated by rows in attempt
 
 3. QuizAttempt
-| **Attribute Name**   | **Data Type**   | **Nullable**   |
+| **Attribute Name**   | **Data Type**   | **Nullable**    |
 | ---------------------|-----------------|-----------------|
 | attempt_id           | INT             | No              | [PK]
 | quiz_id              | INT             | No              | [FK] quiz table
@@ -119,10 +118,10 @@ For your Java-based quiz website, here are some key aspects you can consider:
 | attempt_duration     | INT             | No              |
 | chosen_answers       | JSON            | No              |
 | score 							 | INT             | No              |
-| difficulty_rating    | INT             | No              |
+| difficulty_rating    | INT             | No              | feedback on how the attempt was
 
 4. QuizQuestions
-| **Attribute Name**   | **Data Type**   | **Nullable**   |
+| **Attribute Name**   | **Data Type**   | **Nullable**    |
 | ---------------------|-----------------|-----------------|
 | question_id          | INT             | No              | [FK] questions table
 | quiz_id              | INT             | No              | [FK] quiz table
@@ -130,23 +129,23 @@ For your Java-based quiz website, here are some key aspects you can consider:
 - chosen_answers JSON list
 
 5. Student
-| **Attribute Name**   | **Data Type**   | **Nullable**   |
-| ---------------------|-----------------|-----------------|
-| student_id           | INT             | No              | [PK]
-| student_username             | VARCHAR(255)    | No              |
-| student_password             | VARCHAR(255)    | No              |
-| student_name                 | VARCHAR(255)    | No              |
-| student_birthday 						 | DATE 					 | No 						 |	
-| student_email                | VARCHAR(255)    | No              |
-| student_created_at           | DATETIME        | No              |
+| **Attribute Name** | **Data Type** | **Nullable** |
+| ------------------ | ------------- | ------------ |
+| student_id         | INT           | No           | [PK]
+| student_username   | VARCHAR(255)  | No           |
+| student_password   | VARCHAR(255)  | No           |
+| student_name       | VARCHAR(255)  | No           |
+| student_birthday   | DATE          | No           |
+| student_email      | VARCHAR(255)  | No           |
+| student_created_at | DATETIME      | No           |
 
 6. Lecturer
-| **Attribute Name**   | **Data Type**   | **Nullable**   |
-| ---------------------|-----------------|-----------------|
-| lecturer_id          | INT             | No              | [PK]
-| lecturer_username             | VARCHAR(255)    | No              |
-| lecturer_password             | VARCHAR(255)    | No              |
-| lecturer_name                 | VARCHAR(255)    | No              |
-| lecturer_email                | VARCHAR(255)    | No              |
-| lecturer_created_at           | DATETIME        | No              |
+| **Attribute Name**  | **Data Type** | **Nullable** |
+| ------------------- | ------------- | ------------ |
+| lecturer_id         | INT           | No           | [PK]
+| lecturer_username   | VARCHAR(255)  | No           |
+| lecturer_password   | VARCHAR(255)  | No           |
+| lecturer_name       | VARCHAR(255)  | No           |
+| lecturer_email      | VARCHAR(255)  | No           |
+| lecturer_created_at | DATETIME      | No           |
 
