@@ -85,6 +85,7 @@ For your Java-based quiz website, here are some key aspects you can consider:
 | **Attribute Name**  | **Data Type** | **Nullable** |
 | ------------------- | ------------- | ------------ |
 | `question_id`       | INT           | No           | [PK] |
+| `quiz_id`           | INT           | No           | [FK] quiz table |
 | `question_text`     | VARCHAR(255)  | No           |
 | `question_type`     | ENUM          | No           |
 | `correct_answers`   | JSON          | Yes          |
@@ -120,13 +121,14 @@ For your Java-based quiz website, here are some key aspects you can consider:
 | score 							 | INT             | No              |
 | difficulty_rating    | INT             | No              | feedback on how the attempt was
 
-4. QuizQuestions
-| **Attribute Name**   | **Data Type**   | **Nullable**    |
-| ---------------------|-----------------|-----------------|
-| question_id          | INT             | No              | [FK] questions table
-| quiz_id              | INT             | No              | [FK] quiz table
+4. Admin
+| **Attribute Name** | **Data Type** | **Nullable** |
+| ------------------ | ------------- | ------------ |
+| admin_id           | INT           | No           | [PK]
+| admin_username     | VARCHAR(255)  | No           |
+| admin_password     | VARCHAR(255)  | No           |
+| created_at         | DATETIME      | No           |
 
-- chosen_answers JSON list
 
 5. Student
 | **Attribute Name** | **Data Type** | **Nullable** |
