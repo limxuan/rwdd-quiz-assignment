@@ -1,42 +1,3 @@
-
-For your Java-based quiz website, here are some key aspects you can consider:
-
-	1.	Login/Registration Page:
-	•	User authentication with registration for new users, secure login with password hashing, and options for social media logins.
-	2.	Attempt Quiz Page:
-	•	Display questions (multiple choice, true/false, short answer, etc.) with timers.
-	•	Support for question navigation, answer submission
-	3.	Explore Quiz Page:
-	•	Students are able to view quizzes that are public by lecturers
-	•	Students can join a quiz by a code
-	4.	Lecturer Quiz Panel:
-	•	Lecture interface to create, edit, delete quizzes, questions, and manage quiz settings (e.g., time limits, randomization).
-	•	Quiz analytics and user performance monitoring (all students that attempted the quiz complete and incomplete)
-	5.	Student Dashboard:
-	•	Personalized dashboard showing past quiz attempts, results, and upcoming quizzes.
-	•	Leaderboard for competitive quizzing.
-	5.	Result & Feedback Page:
-	•	Summary of quiz performance, detailed answers with correct/wrong responses, and feedback on performance.
-	7.	Quiz Analytics:
-	•	Track metrics like average scores, time taken per question, and difficulty level analysis.
-	- 
-1. /login.php 
-- 
-2. /register.php
-- 
-3. /quiz/explore.php
-- 
-4. /quiz/create.php
-- 
-5. /quiz/attempt.php
-- 
-6. /dashboard/student.php
-- 
-7. /dashboard/lecturer.php
-- 
-8. /analytics.php
--
-
 # Project outline
 1. Landing Page (less important)
 2. Login / Registration Page
@@ -73,6 +34,12 @@ For your Java-based quiz website, here are some key aspects you can consider:
 	- Option to delete quizzes
 	- change password
 	- additional information (name, joined date etc)
+
+	- /dashboard/admin.php
+	- remove users
+	- ban users
+	- unban users
+	- view user details in detail
 	
 5. Analytics
 	- /analytics.php
