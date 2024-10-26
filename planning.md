@@ -118,3 +118,19 @@
 | lecturer_email      | VARCHAR(255)  | No           |
 | lecturer_created_at | DATETIME      | No           |
 
+7. LecturerRegistrations 
+| **Attribute Name**             | **Data Type**                     | **Nullable** | **key**                   |
+| ------------------------------ | --------------------------------- | ------------ | ------------------------- |
+| registration_id                | INT                               | No           | [PK]                      |  |
+| registration_lecturer_username | VARCHAR(255)                      | No           |
+| registration_lecturer_password | VARCHAR(255)                      | No           |
+| registration_lecturer_name     | varchar(255)                      | no           |
+| registration_lecturer_email    | varchar(255)                      | no           |
+| registration_submitted_at      | datetime                          | no           |
+| registration_status            | 'pending', 'approved', 'rejected' | no           |
+| approved_by                    | int                               | yes          | [fk admin id] admin table |  |
+| approved_at                    | DATETIME                          | Yes          |
+
+- approved_by is the admin id who approved the registration
+
+
