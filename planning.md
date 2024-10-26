@@ -48,22 +48,22 @@
 	- For mcq only, % of chosen answer and the correct answer is highlighted
 	
 # Data dictionary (SQL Tables)
-1. Questions
+1. Questions x
 | **Attribute Name**  | **Data Type** | **Nullable** |
 | ------------------- | ------------- | ------------ |
 | `question_id`       | INT           | No           | [PK] |
 | `quiz_id`           | INT           | No           | [FK] quiz table |
 | `question_text`     | VARCHAR(255)  | No           |
-| `question_type`     | ENUM          | No           |
-| `correct_answers`   | JSON          | Yes          |
-| `wrong_answers`     | JSON          | Yes          |
+| `question_type`     | VARCHAR(255)          | No           |
+| `correct_answers`   | TEXT          | Yes          | A;B
+| `wrong_answers`     | TEXT          | Yes          | C;D;E
 | `answer_percentage` | JSON          | Yes          | `[20, 80]` |
-| `created_at`        | DATETIME      | No           |
+| `question_created_at`        | DATETIME      | No           |
 | `last_updated_at`   | DATETIME      | No           |
 
 
-2. Quiz
-| **Attribute Name** | **Data Type** | **Nullable** |
+2. Quiz x
+| **Attribute Name** | **Data Type** | **Nullable** |1
 | ------------------ | ------------- | ------------ |
 | quiz_id            | INT           | No           | [PK] |
 | lecturer_id        | INT           | No           | [FK] lecturer table |
@@ -76,7 +76,7 @@
 | created_at         | DATETIME      | No           |
 - total attemps are calculated by rows in attempt
 
-3. QuizAttempt
+3. QuizAttempt x
 | **Attribute Name**   | **Data Type**   | **Nullable**    |
 | ---------------------|-----------------|-----------------|
 | attempt_id           | INT             | No              | [PK]
@@ -88,16 +88,16 @@
 | score 							 | INT             | No              |
 | difficulty_rating    | INT             | No              | feedback on how the attempt was
 
-4. Admin
+4. Admin x
 | **Attribute Name** | **Data Type** | **Nullable** |
 | ------------------ | ------------- | ------------ |
 | admin_id           | INT           | No           | [PK]
 | admin_username     | VARCHAR(255)  | No           |
 | admin_password     | VARCHAR(255)  | No           |
-| created_at         | DATETIME      | No           |
+| admin_created_at         | DATETIME      | No           |
 
 
-5. Student
+5. Student x
 | **Attribute Name** | **Data Type** | **Nullable** |
 | ------------------ | ------------- | ------------ |
 | student_id         | INT           | No           | [PK]
@@ -108,29 +108,31 @@
 | student_email      | VARCHAR(255)  | No           |
 | student_created_at | DATETIME      | No           |
 
-6. Lecturer
-| **Attribute Name**  | **Data Type** | **Nullable** |
-| ------------------- | ------------- | ------------ |
-| lecturer_id         | INT           | No           | [PK]
-| lecturer_username   | VARCHAR(255)  | No           |
-| lecturer_password   | VARCHAR(255)  | No           |
-| lecturer_name       | VARCHAR(255)  | No           |
-| lecturer_email      | VARCHAR(255)  | No           |
-| lecturer_created_at | DATETIME      | No           |
+6. Lecturer x
+| **Attribute Name**  | **Data Type**                     | **Nullable** | key                                  |
+| ------------------- | --------------------------------- | ------------ | ------------------------------------ |
+| lecturer_id         | INT                               | No           | [PK]                                 |  |
+| admin_id         | INT                               | No          | [FK] admin table                     |  |
+| lecturer_username   | VARCHAR(255)                      | No           |
+| lecturer_password   | VARCHAR(255)                      | No           |
+| lecturer_name       | VARCHAR(255)                      | No           |
+| lecturer_email      | VARCHAR(255)                      | No           |
+| lecturer_created_at | DATETIME                          | No           |
+| registration_status | 'pending', 'approved', 'rejected' | no           |
+| approved_at         | DATETIME                          | Yes          | is null if not approved yet by admin |
+- admin id is the person who approved the registration
 
-7. LecturerRegistrations 
-| **Attribute Name**             | **Data Type**                     | **Nullable** | **key**                   |
-| ------------------------------ | --------------------------------- | ------------ | ------------------------- |
-| registration_id                | INT                               | No           | [PK]                      |  |
-| registration_lecturer_username | VARCHAR(255)                      | No           |
-| registration_lecturer_password | VARCHAR(255)                      | No           |
-| registration_lecturer_name     | varchar(255)                      | no           |
-| registration_lecturer_email    | varchar(255)                      | no           |
-| registration_submitted_at      | datetime                          | no           |
-| registration_status            | 'pending', 'approved', 'rejected' | no           |
-| approved_by                    | int                               | yes          | [fk admin id] admin table |  |
-| approved_at                    | DATETIME                          | Yes          |
+7. BannedUsers
+| **Attribute Name** | **Data Type** | **Nullable** | key  |
+| ------------------ | ------------- | ------------ | ---- |
+| ban_id             | int           | no           | [pk] |  |
+| admin_id           | int           | yes          | [fk] |  |
+| student_id         | int           | yes          | [fk] |  |
+| lecturer_id        | int           | yes          | [fk] |  |
+| user_type          | varchar(255)  | yes          |      |
+| banned_at          | datetime      | yes          |
+| ban_reason         | VARCHAR(255)  | Yes          |
 
-- approved_by is the admin id who approved the registration
+-user_type can be either 'student' or 'lecturer'
 
 
